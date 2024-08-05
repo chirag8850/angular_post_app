@@ -1,0 +1,34 @@
+<nav>
+    <h1 class="logo">exportify.</h1>
+    <ul class="nav-links">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+    <button (click)="logout()">Logout</button>
+</nav>
+<div class="user-cards">
+    <div *ngFor="let user of users" class="user-card">
+      <div class="user-item">
+        <div>
+            <h3>Username</h3>
+            <p>{{ user.name }}</p>
+        </div>
+        <div>
+            <h3>Email</h3>
+            <p>{{ user.email }}</p>  
+        </div>
+        <div>
+            <h3>Phone</h3>
+            <p>{{ user.phone }}</p> 
+        </div>
+        <div>
+            <h3>Website</h3>
+            <p>{{ user.website }}</p>
+        </div>
+        <div class="view-posts">
+            <button (click)="viewPost(user.id)">View Posts</button>
+        </div>
+      </div>
+    </div>
+</div>

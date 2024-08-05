@@ -1,0 +1,24 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <p>Log in to view user information</p>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input id="username" formControlName="username" placeholder="Enter email as username">
+        <div *ngIf="submitted && loginForm.controls['username'].errors">
+          <span *ngIf="loginForm.controls['username'].errors['required']" class="error">Username is required.</span>
+          <span *ngIf="loginForm.controls['username'].errors['email']" class="error">Enter a valid email address.</span>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter Password">
+        <div *ngIf="submitted && loginForm.controls['password'].errors">
+          <span *ngIf="loginForm.controls['password'].errors['required']" class="error">Password is required.</span>
+          <span *ngIf="loginForm.controls['password'].errors['minlength']" class="error">Password must be at least 5 characters long.</span>
+        </div>
+      </div>
+      <button type="submit" class="submit-button">Log in</button>
+    </form>
+  </div>
