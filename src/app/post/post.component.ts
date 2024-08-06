@@ -2,10 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+interface Reactions {
+  likes: number;
+  dislikes: number;
+}
+
 interface Post {
   id: number;
   title: string;
   body: string;
+  reactions: Reactions;
+  tags: string[];
 }
 
 @Component({
@@ -25,8 +32,8 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.userId = params['id'];
-      console.log(this.userId);
+      this.userId = +params['id'];
+      this.fetchPost(this.userId);
     });
   }
 
@@ -35,7 +42,6 @@ export class PostComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.post = data;
-          console.log(this.post);
         },
         error: (err) => {
           console.error('Failed to fetch post', err);
@@ -46,5 +52,17 @@ export class PostComponent implements OnInit {
   logout(): void {
     localStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  likePost(): void {
+    if (this.post) {
+      this.post.reactions.likes++;
+    }
+  }
+
+  dislikePost(): void {
+    if (this.post) {
+      this.post.reactions.dislikes++;
+    }
   }
 }

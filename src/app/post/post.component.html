@@ -1,9 +1,33 @@
 <nav>
-    <h1 class="logo">exportify.</h1>
-    <ul class="nav-links">
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/about">About</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
-    </ul>
-    <button (click)="logout()">Logout</button>
+  <h1 class="logo">exportify.</h1>
+  <ul class="nav-links">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/contact">Contacts</a></li>
+  </ul>
+  <button (click)="logout()">Logout</button>
 </nav>
+<div class="container">
+  <div class="cards" *ngIf="post; else loadingTemplate">
+    <div class="card">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">{{ post.body }}</p>
+      <div class="no-bottom">
+        <div class="actions">
+          <div (click)="likePost()" class="emoji">👍 : {{ post.reactions.likes }}</div>
+          <div (click)="dislikePost()" class="emoji">👎 : {{ post.reactions.dislikes }}</div>
+        </div>
+        <div class="comments">
+          <div class="badge" *ngFor="let tag of post.tags">
+            {{ tag }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loadingTemplate>
+    <div class="loading">
+      <app-loading></app-loading>
+    </div>
+  </ng-template>
+</div>

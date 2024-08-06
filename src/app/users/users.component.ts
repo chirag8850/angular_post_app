@@ -17,6 +17,14 @@ interface User {
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
+  searchTerm: string = '';
+  loading = true;
+
+  email = localStorage.getItem('username');
+
+  currentTime: string = '';
+
+  private timeInterval: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -26,11 +34,24 @@ export class UsersComponent implements OnInit {
         next: (data) => {
           this.users = data;
           console.log(this.users);
+          this.loading = false;
         },
         error: (err) => {
           console.error('Failed to fetch users', err);
+          this.loading = false;
         }
       });
+
+    this.timeInterval = setInterval(() => {
+      const now = new Date();
+      this.currentTime = now.toLocaleTimeString();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.timeInterval) {
+      clearInterval(this.timeInterval);
+    }
   }
 
   logout(): void {
@@ -40,5 +61,14 @@ export class UsersComponent implements OnInit {
 
   viewPost(userId: number): void {
     this.router.navigate([`/post/${userId}`]);
+  }
+
+  filteredUsers(): User[] {
+    return this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      user.phone.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      user.website.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }

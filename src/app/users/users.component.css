@@ -1,51 +1,70 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #333;
-    color: white;
-  }
-  
-  nav .logo {
-    font-size: 1.5rem;
-    margin: 0;
-  }
-  
-  nav .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav .nav-links li {
-    margin: 0;
-  }
-  
-  nav .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  
-  nav .nav-links a:hover {
-    text-decoration: underline;
-  }
-  
-  nav button {
-    padding: 0.5rem 1rem;
-    background: #22bc7c;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  nav button:hover {
-    background-color: #1c875b;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav .nav-links li {
+  margin: 0;
+}
+
+nav .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav .nav-links a:hover {
+  text-decoration: underline;
+}
+
+nav .search-logout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-logout input {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1rem;
+}
+
+nav input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+nav button {
+  padding: 0.5rem 1rem;
+  background: #22bc7c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+nav button:hover {
+  background-color: #1c875b;
+}
+
   
   .user-cards {
     padding: 1rem;
@@ -59,6 +78,11 @@ nav {
     border: 1px solid #ccc;
     border-radius: 5px;
     max-width: 100%;
+    background: #22bc7c;
+  }
+
+  .user-card:hover{
+    background: #1c875b;
   }
   
   .user-item {
@@ -95,4 +119,55 @@ nav {
   .view-posts button:hover {
     background-color: #0056b3;
   }
+
+  .loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+.no-user{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    font-size: x-large;
+}
+
+.welcome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.welcome .email{
+  margin-left: 1rem;
+  font-weight: bold;
+  background-color: aquamarine;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.current-time{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+  
   
